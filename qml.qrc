@@ -1,0 +1,47 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/background.png</file>
+        <file>MainButton.qml</file>
+        <file>Gauge.qml</file>
+        <file>images/ORG_Main.png</file>
+        <file>images/ORG_Media.png</file>
+        <file>MyButton.qml</file>
+        <file>images/gauge_inner.png</file>
+        <file>Indicator.qml</file>
+        <file>DebugTracer.qml</file>
+        <file>images/gauge_base.png</file>
+        <file>images/tile_lt.png</file>
+        <file>images/tile_lt_focused.png</file>
+        <file>images/tile_lb.png</file>
+        <file>images/tile_lb_focused.png</file>
+        <file>images/tile_rt.png</file>
+        <file>images/tile_rt_focused.png</file>
+        <file>images/tile_rb.png</file>
+        <file>images/tile_rb_focused.png</file>
+        <file>MyLabel.qml</file>
+        <file>images/Tbt_arrow.png</file>
+        <file>images/CHARGE.png</file>
+        <file>images/POWER.png</file>
+        <file>images/button_basic.png</file>
+        <file>images/button_basic_pressed.png</file>
+        <file>images/icons/back_icon.png</file>
+        <file>images/bg.png</file>
+        <file>images/music_area_bg.png</file>
+        <file>images/icons/list_icon.png</file>
+        <file>images/icons/pause_icon.png</file>
+        <file>images/icons/play_icon.png</file>
+        <file>images/icons/skip_backwards_icon.png</file>
+        <file>images/icons/skip_forwards_icon.png</file>
+        <file>images/covers/cover_1.png</file>
+        <file>images/covers/cover_2.png</file>
+        <file>images/cover_mask.png</file>
+        <file>MediaContent.qml</file>
+        <file>MainContent.qml</file>
+        <file>images/MUSIC.png</file>
+        <file>images/NAVI.png</file>
+        <file>images/PHONE.png</file>
+        <file>images/gauge_power_charge.png</file>
+        <file>MyMediaPlayer.qml</file>
+    </qresource>
+</RCC>
