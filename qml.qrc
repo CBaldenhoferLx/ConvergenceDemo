@@ -43,5 +43,12 @@
         <file>images/PHONE.png</file>
         <file>images/gauge_power_charge.png</file>
         <file>MyMediaPlayer.qml</file>
+        <file>PlaylistContent.qml</file>
+        <file>ContentBase.qml</file>
+        <file>images/ORG_Playlist.png</file>
+        <file>images/playlist_area_bg.png</file>
+        <file>images/Playlists.png</file>
+        <file>images/list_selection_focus.png</file>
+        <file>images/icon_play_list.png</file>
     </qresource>
 </RCC>

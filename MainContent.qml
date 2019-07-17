@@ -3,10 +3,8 @@ import QtQuick.Layouts 1.3
 
 import com.luxoft.demo 1.0
 
-Item {
-    id: mainContent
-
-    signal changeStateRequested(string newState)
+ContentBase {
+    id: root
 
     MainButton {
         id: leftTop

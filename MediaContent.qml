@@ -4,19 +4,17 @@ import QtGraphicalEffects 1.0
 
 import com.luxoft.demo 1.0
 
-Item {
+ContentBase {
     id: root
 
-    signal changeStateRequested(string newState)
-
-    onVisibleChanged: {
-        if (visible) {
+    function handleActivate(prevState) {
+        if (prevState==="main") {
+            root.visible = true
             fadeIn.start()
+        } else {
+            root.visible = true
+            activated()
         }
-    }
-
-    Component.onCompleted: {
-        console.log(MyMediaPlayer.songCount)
     }
 
     ParallelAnimation {
@@ -34,6 +32,12 @@ Item {
             from: 0.8
             to: 1
         }
+
+        ScriptAction {
+            script: {
+                activated()
+            }
+        }
     }
 
     Image {
@@ -44,10 +48,12 @@ Item {
         source: "images/music_area_bg.png"
 
         Rectangle {
+            id: progressBar
+
             anchors.bottom: parent.top
             anchors.bottomMargin: 1
 
-            width: 400
+            width: 1000 * MyMediaPlayer.currentProgress
 
             height: 6
             color: "white"
@@ -61,7 +67,7 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 228
 
-            text: "Summer Tunes"
+            text: MyMediaPlayer.currentPlaylistName
 
             font.pointSize: 21
             font.bold: false
@@ -152,6 +158,7 @@ Item {
         iconName: "list"
 
         onTriggered: {
+            changeStateRequested("playlist")
         }
     }
 
@@ -188,28 +195,6 @@ Item {
 
         onTriggered: {
             MyMediaPlayer.nextTrack()
-        }
-    }
-
-    Image {
-        id: tbtNavi
-        x: 1646
-        y: 121
-
-        source: "images/Tbt_arrow.png"
-
-        MyLabel {
-            id: tbtNaviLabel
-
-            anchors.left: parent.right
-            anchors.leftMargin: 36
-            anchors.verticalCenter: parent.verticalCenter
-
-            font.pointSize: 32
-            font.bold: false
-            font.letterSpacing: -3.33
-
-            text: "1,3 km"
         }
     }
 }
