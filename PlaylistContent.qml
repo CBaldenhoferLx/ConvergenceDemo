@@ -11,6 +11,38 @@ ContentBase {
 
     property bool isDebug: false
 
+    function handleActivate(prevState) {
+        root.opacity = 0
+        root.visible = true
+        fadeIn.start()
+    }
+
+    SequentialAnimation {
+        id: fadeIn
+
+        ParallelAnimation {
+
+            OpacityAnimator {
+                target: root
+                from: 0
+                to: 1
+            }
+
+            ScaleAnimator {
+                target: root
+                from: 0.8
+                to: 1
+            }
+
+        }
+
+        ScriptAction {
+            script: {
+                activated()
+            }
+        }
+    }
+
     Image {
         id: debugBackground
         source: "images/ORG_Playlist.png"
@@ -27,9 +59,9 @@ ContentBase {
         ListView {
             anchors.fill: parent
             anchors.rightMargin: 100
-            anchors.leftMargin: 5
-            anchors.topMargin: 5
-            anchors.bottomMargin: 5
+            anchors.leftMargin: 45
+            anchors.topMargin: 35
+            anchors.bottomMargin: 0
 
             snapMode: ListView.SnapToItem
             clip: true
@@ -38,9 +70,10 @@ ContentBase {
                 id: rootDelegate
 
                 width: 1365
-                height: 138
+                height: 142
 
                 MouseArea {
+                    id: mouseArea
                     anchors.fill: parent
 
                     onClicked: {
@@ -53,8 +86,10 @@ ContentBase {
                     id: nameLabel
 
                     text: name
-                    font.pointSize: 21
+                    font.pointSize: 26
                     font.bold: false
+
+                    color: mouseArea.pressed ? "#16C7AA" : "white"
 
                     anchors.left: parent.left
                     anchors.leftMargin: 100
@@ -88,7 +123,7 @@ ContentBase {
         }
 
         Image {
-            source: "images/Playlists.png"
+            source: "images/PLAYLISTS.png"
 
             anchors.left: parent.right
             anchors.leftMargin: 48

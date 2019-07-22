@@ -9,28 +9,66 @@ ContentBase {
 
     function handleActivate(prevState) {
         if (prevState==="main") {
+            root.opacity = 0
             root.visible = true
             fadeIn.start()
         } else {
+            root.opacity = 0
+            root.scale = 1.2
             root.visible = true
-            activated()
+            fadeInZoom.start()
         }
     }
 
-    ParallelAnimation {
+    function formatMsAsTrackTime(ms) {
+        var d = new Date(null);
+        d.setMilliseconds(ms);
+        return d.toISOString().substr(14, 5);
+    }
+
+    SequentialAnimation {
         id: fadeIn
 
-        OpacityAnimator {
-            target: root
-            from: 0
-            to: 1
-            duration: 1000
+        ParallelAnimation {
+
+            OpacityAnimator {
+                target: root
+                from: 0
+                to: 1
+            }
+
+            ScaleAnimator {
+                target: root
+                from: 0.8
+                to: 1
+            }
+
         }
 
-        ScaleAnimator {
-            target: root
-            from: 0.8
-            to: 1
+        ScriptAction {
+            script: {
+                activated()
+            }
+        }
+    }
+
+    SequentialAnimation {
+        id: fadeInZoom
+
+        ParallelAnimation {
+
+            OpacityAnimator {
+                target: root
+                from: 0
+                to: 1
+            }
+
+            ScaleAnimator {
+                target: root
+                from: 1.2
+                to: 1
+            }
+
         }
 
         ScriptAction {
@@ -63,11 +101,12 @@ ContentBase {
 
         MyLabel {
             anchors.bottom: parent.top
-            anchors.bottomMargin: 16
+            anchors.bottomMargin: 30
             anchors.left: parent.left
             anchors.leftMargin: 228
 
             text: MyMediaPlayer.currentPlaylistName
+            // text: "Summer Tunes"
 
             font.pointSize: 21
             font.bold: false
@@ -86,7 +125,8 @@ ContentBase {
 
             font.pointSize: 32
             font.bold: false
-            font.letterSpacing: -3.33
+
+            smallLetterSpacing: true
 
             MyLabel {
                 anchors.left: parent.left
@@ -98,7 +138,48 @@ ContentBase {
 
                 font.pointSize: 21
                 font.bold: false
-                font.letterSpacing: -3.33
+
+                smallLetterSpacing: true
+            }
+        }
+
+        MyLabel {
+            anchors.right: parent.right
+            anchors.rightMargin: 152
+            anchors.bottom: parent.top
+            anchors.bottomMargin: 30
+
+            width: 295
+
+            font.pointSize: 21
+            font.bold: false
+            color: "#8C939D"
+
+            text: formatMsAsTrackTime(MyMediaPlayer.currentMs)
+
+            MyLabel {
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+
+                width: 113
+
+                font.pointSize: 17
+                font.bold: false
+                color: "#8C939D"
+
+                text: formatMsAsTrackTime(MyMediaPlayer.currentDurationMs)
+
+                MyLabel {
+                    anchors.right: parent.left
+                    anchors.bottom: parent.bottom
+                    anchors.rightMargin: 6
+
+                    font.pointSize: 21
+                    font.bold: false
+                    color: "#8C939D"
+
+                    text: "/"
+                }
             }
         }
 

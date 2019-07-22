@@ -19,7 +19,11 @@ Item {
         },
         State {
             name: "playlist"
+        },
+        State {
+            name: "navi"
         }
+
     ]
 
     property var lastChange: 0      // hack
@@ -66,6 +70,8 @@ Item {
 
             state: root.state
 
+            z: 100
+
             transitions: Transition {
                 id: gaugeTransition
 
@@ -87,7 +93,7 @@ Item {
                     PropertyChanges {
                         target: gauge
                         x: 1360
-                        y: 217
+                        y: 215
                         scale: 0.72
                     }
                 }
@@ -101,9 +107,11 @@ Item {
 
             text: new Date().toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
 
-            font.pointSize: 24
+            font.pointSize: 23
 
             color: "#8C939D"
+
+            z: 100
         }
 
         Image {
@@ -115,6 +123,8 @@ Item {
 
             visible: root.state!=="main"
 
+            z: 100
+
             MyLabel {
                 id: tbtNaviLabel
 
@@ -124,7 +134,8 @@ Item {
 
                 font.pointSize: 32
                 font.bold: false
-                font.letterSpacing: -3.33
+
+                smallLetterSpacing: true
 
                 text: "1,3 km"
             }
@@ -140,6 +151,9 @@ Item {
                 switch(newState) {
                 case "media":
                     root.requestChangeState(newState, mainContent, mediaContent, 1200)
+                    break;
+                case "navi":
+                    root.requestChangeState(newState, mainContent, naviContent, 1200)
                     break;
                 }
             }
@@ -180,6 +194,21 @@ Item {
 
             onChangeStateRequested: {
                 root.requestChangeState(newState, playlistContent, mediaContent, 10)
+            }
+
+            onActivated: {
+            }
+        }
+
+        NaviContent {
+            id: naviContent
+
+            state: root.state
+            anchors.fill: parent
+            visible: false
+
+            onChangeStateRequested: {
+                root.requestChangeState(newState, naviContent, mainContent, 10)
             }
 
             onActivated: {

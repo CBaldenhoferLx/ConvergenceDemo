@@ -16,7 +16,8 @@ SOURCES += \
         main.cpp
 
 RESOURCES += qml.qrc \
-    media.qrc
+    media.qrc \
+    fonts.qrc
 
 
 OTHER_FILES += \

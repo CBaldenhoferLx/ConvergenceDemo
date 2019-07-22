@@ -5,4 +5,8 @@ Text {
     font.family: "Cholla"
 
     color: "white"
+
+    property bool smallLetterSpacing: false
+
+    font.letterSpacing: smallLetterSpacing ? -2 : 0
 }

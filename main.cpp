@@ -3,6 +3,7 @@
 #include <QGuiApplication>
 #include <QSysInfo>
 #include <QQuickView>
+#include <QFontDatabase>
 
 #include <QDebug>
 
@@ -25,6 +26,11 @@ int main(int argc, char *argv[])
 
 
     QGuiApplication app(argc, argv);
+
+    QFontDatabase fontDatabase;
+    fontDatabase.addApplicationFont(":/fonts/Cholla-Bold_DRAFT.ttf");
+    fontDatabase.addApplicationFont(":/fonts/Cholla-BoldItalicDRAFT.ttf");
+    fontDatabase.addApplicationFont(":/fonts/Cholla-Regular.ttf");
 
     QQuickView view;
     view.setSource(QUrl(QStringLiteral("qrc:/main.qml")));

@@ -47,8 +47,19 @@
         <file>ContentBase.qml</file>
         <file>images/ORG_Playlist.png</file>
         <file>images/playlist_area_bg.png</file>
-        <file>images/Playlists.png</file>
+        <file>images/PLAYLISTS.png</file>
         <file>images/list_selection_focus.png</file>
         <file>images/icon_play_list.png</file>
+        <file>NaviContent.qml</file>
+        <file>images/Carsor.png</file>
+        <file>images/Map_route.png</file>
+        <file>images/icons/cancel_icon.png</file>
+        <file>images/icons/fullscreen_icon.png</file>
+        <file>images/icons/voice_icon.png</file>
+        <file>images/Map_overlay.png</file>
+        <file>images/Mask_map.png</file>
+        <file>images/ORG_Navi.png</file>
+        <file>images/Map_screen_lower_part.png</file>
+        <file>images/button_basic_navi.png</file>
     </qresource>
 </RCC>

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fonts/Cholla-Bold_DRAFT.ttf</file>
+        <file>fonts/Cholla-BoldItalicDRAFT.ttf</file>
+        <file>fonts/Cholla-Regular.ttf</file>
+    </qresource>
+</RCC>

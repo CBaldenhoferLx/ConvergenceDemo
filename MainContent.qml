@@ -6,6 +6,34 @@ import com.luxoft.demo 1.0
 ContentBase {
     id: root
 
+    function handleActivate(prevState) {
+        root.opacity = 0
+        root.visible = true
+        fadeIn.start()
+    }
+
+    SequentialAnimation {
+        id: fadeIn
+
+        PauseAnimation {
+            duration: 200
+        }
+
+        OpacityAnimator {
+            target: root
+            from: 0
+            to: 1
+            duration: 300
+        }
+
+        ScriptAction {
+            script: {
+                activated()
+            }
+        }
+    }
+
+
     MainButton {
         id: leftTop
         x: 28
@@ -19,9 +47,9 @@ ContentBase {
 
         ColumnLayout {
             anchors.fill: parent
-            anchors.topMargin: 30
-            anchors.bottomMargin: 30
-            anchors.leftMargin: 24
+            anchors.topMargin: 85
+            anchors.bottomMargin: 70
+            anchors.leftMargin: 40
 
             spacing: 0
 
@@ -32,8 +60,9 @@ ContentBase {
                 font.pointSize: 32
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                font.letterSpacing: -3.33
                 font.bold: false
+
+                smallLetterSpacing: true
             }
 
             MyLabel {
@@ -43,8 +72,9 @@ ContentBase {
                 font.pointSize: 22
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                font.letterSpacing: -3.33
                 font.bold: false
+
+                smallLetterSpacing: true
             }
         }
     }
@@ -80,8 +110,13 @@ ContentBase {
             verticalAlignment: Text.AlignVCenter
 
             font.pointSize: 32
+            font.bold: false
 
             text: "1,3 km"
+        }
+
+        onTriggered: {
+            changeStateRequested("navi")
         }
     }
 
@@ -108,10 +143,11 @@ ContentBase {
 
             anchors.top: parent.top
             anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.rightMargin: 40
             verticalAlignment: Text.AlignVCenter
 
             text: "4 Messages"
-            font.letterSpacing: -3.33
             font.bold: false
         }
     }
@@ -139,10 +175,11 @@ ContentBase {
 
             anchors.top: parent.top
             anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.rightMargin: 40
             verticalAlignment: Text.AlignVCenter
 
             text: "16 on road"
-            font.letterSpacing: -3.33
             font.bold: false
         }
     }

@@ -5,6 +5,7 @@ Item {
 
     signal triggered
 
+    property string backgroundImageSuffix: ""
     property string iconName: "back"
 
     width: imageBackground.paintedWidth
@@ -12,7 +13,7 @@ Item {
 
     Image {
         id: imageBackground
-        source: "images/button_basic" + (mouseArea.pressed ? "_pressed" : "") + ".png"
+        source: mouseArea.pressed ? "images/button_basic_pressed.png" : "images/button_basic" + backgroundImageSuffix + ".png"
 
         MouseArea {
             id: mouseArea

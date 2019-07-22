@@ -48,11 +48,12 @@ Item {
         id: speed
 
         anchors.centerIn: parent
+        anchors.verticalCenterOffset: 12
 
         text: currentSpeed
 
         font.pointSize: 101
-        //font.italic: true
+        font.italic: true
     }
 
     Image {
